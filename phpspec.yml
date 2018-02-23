@@ -1,0 +1,4 @@
+composer_suite_detection: true
+
+extensions:
+    Memio\SpecGen\MemioSpecGenExtension: ~
