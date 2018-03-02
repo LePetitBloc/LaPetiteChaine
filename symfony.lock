@@ -29,6 +29,9 @@
     "memio/validator": {
         "version": "v2.0.1"
     },
+    "mikey179/vfsstream": {
+        "version": "v1.6.5"
+    },
     "paragonie/random_compat": {
         "version": "v2.0.11"
     },

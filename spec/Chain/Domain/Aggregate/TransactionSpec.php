@@ -19,10 +19,14 @@ class TransactionSpec extends ObjectBehavior
         $this->beConstructedThrough('create', [
            new TransactionId(),
         ]);
+
+        $this->getTransactionId()->shouldImplement(TransactionId::class);
+        $this->getTransactionStatus()->shouldReturn("UNPROCESSED");
     }
 
-    function it_should_have_an_identifier()
+    function it_should_resolve_a_transaction()
     {
-        $this->getTransactionId()->shouldImplement(TransactionId::class);
+        $this->resolve();
+        $this->getTransactionStatus()->shouldReturn("PROCESSED");
     }
 }

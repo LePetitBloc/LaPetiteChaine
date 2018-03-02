@@ -26,8 +26,7 @@ class Block
         BlockId $blockId,
         Transaction $coinbase,
         BlockId $parent
-    ): self
-    {
+    ): self {
         $block = new Block();
         $block->id = $blockId;
         $block->coinbase = $coinbase;
