@@ -11,9 +11,7 @@ interface TransactionRepository
 
     public function find(TransactionId $id): ?Transaction;
 
-    public function add(Transaction $transaction);
-
-    public function update(Transaction $transaction);
+    public function add(Transaction $transaction): void;
 
     public function getClassName(): string;
 

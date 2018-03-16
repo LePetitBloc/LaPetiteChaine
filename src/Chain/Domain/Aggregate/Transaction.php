@@ -26,12 +26,23 @@ class Transaction
         return $transaction;
     }
 
-    public function getTransactionId(): TransactionId
+    public static function fromDatabase(
+        TransactionId $id,
+        $status
+    ): self {
+        $transaction = new Transaction();
+        $transaction->id = $id;
+        $transaction->status = $status;
+
+        return $transaction;
+    }
+
+    public function getId(): TransactionId
     {
         return $this->id;
     }
 
-    public function getTransactionStatus(): string
+    public function getStatus(): string
     {
         return $this->status;
     }

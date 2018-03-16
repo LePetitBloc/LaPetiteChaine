@@ -29,10 +29,9 @@ class YamlRepositorySpec extends ObjectBehavior
 
     function it_should_write_content_in_a_file()
     {
-        $filename = mt_rand() . ".txt";
+        $filename = (string) mt_rand();
 
         $this->write($filename, "It's a block, it's a chain, it's a blockchain!");
         $this->read($filename)->shouldContain("chain");
     }
-
 }

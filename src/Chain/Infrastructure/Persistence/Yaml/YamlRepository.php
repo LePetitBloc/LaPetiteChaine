@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Chain\Infrastructure\Persistence\Yaml;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
 class YamlRepository
@@ -26,12 +27,16 @@ class YamlRepository
 
     public function write($filename, $content): void
     {
-        $this->filesystem->appendToFile($this->getBasePath($filename), Yaml::dump($content));
+        $this->filesystem->dumpFile($this->getBasePath($filename), Yaml::dump($content));
     }
 
     public function read($filename)
     {
-        return Yaml::parseFile($this->getBasePath($filename));
+        try {
+            return Yaml::parseFile($this->getBasePath($filename));
+        } catch (ParseException $e) {
+            return [];
+        }
     }
 
     public function getBasePath(string $filename = ""): string

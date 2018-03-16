@@ -11,7 +11,7 @@ final class TransactionId
 
     public function __construct(string $value = null)
     {
-        $this->value = $value ?: Uuid::uuid4();
+        $this->value = $value ?: Uuid::uuid4()->toString();
     }
 
     public function __toString(): string
