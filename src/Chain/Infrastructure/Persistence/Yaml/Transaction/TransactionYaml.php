@@ -55,7 +55,10 @@ class TransactionYaml extends YamlRepository implements TransactionRepository
 
         foreach ($this->findAll() as $persistedTransaction) {
             if (false === $transaction->getId()->isEqualTo($persistedTransaction->getId())) {
-                $transactions[] = $persistedTransaction;
+                $transactions[] = [
+                    'id' => $persistedTransaction->getId()->getValue(),
+                    'status' => $persistedTransaction->getStatus(),
+                ];
             }
         }
 
